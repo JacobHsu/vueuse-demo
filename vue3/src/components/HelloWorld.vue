@@ -1,34 +1,20 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h3>Mouse: {{x}} x {{y}}</h3>
   </div>
 </template>
 
-<script>
-// https://vueuse.org/guide/index.html
-import { useMouse, usePreferredDark, useLocalStorage } from '@vueuse/core';
-export default {
-  name: 'HelloWorld',
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component';
+
+@Options({
   props: {
-    msg: String,
-  },
-  setup() {
-    // tracks mouse position
-    const { x, y } = useMouse();
-
-    // is user prefers dark theme
-    const isDark = usePreferredDark();
-
-    // persist state in localStorage
-    const store = useLocalStorage('my-storage', {
-      name: 'Apple',
-      color: 'red',
-    });
-
-    return { x, y, isDark, store };
-  },
-};
+    msg: String
+  }
+})
+export default class HelloWorld extends Vue {
+  msg!: string
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
