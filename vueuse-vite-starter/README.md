@@ -11,6 +11,32 @@ Starter for [Vite](https://github.com/vuejs/vite) + [VueUse](https://github.com/
 
 📦 [Webpack Example](https://github.com/vueuse/vueuse-vue3-example)
 
+## Debug
+
+> [plugin:vite:vue] [@vue/compiler-sfc] `<script setup>` cannot contain ES module exports.
+
+`<script setup lang="ts">` setup: ()
+
+```js
+<script setup lang="ts">
+import { useMouse } from '@vueuse/core'
+const { x, y } = useMouse()
+</script>
+```
+
+```js
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { useMouse } from '@vueuse/core';
+export default defineComponent({
+  setup: () => {
+    const { x, y } = useMouse();
+    return { x, y };
+  },
+});
+</script>
+```
+
 ## Installation
 
 1. Clone this repository
